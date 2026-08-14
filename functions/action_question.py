@@ -1,4 +1,4 @@
-from allowed_functions import action_string
+from .allowed_functions import action_string
 
 def action_question():
     action = int(input(f"""
