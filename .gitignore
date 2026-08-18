@@ -7,4 +7,5 @@ wheels/
 *.egg-info
 
 #other
-budget_files
+budget_files/
+functions/__pycache__/
