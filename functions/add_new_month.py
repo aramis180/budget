@@ -1,3 +1,5 @@
+import datetime
+
 
 def add_new_month():
     month_allowed = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -12,5 +14,6 @@ def add_new_month():
             break
         year = int(input("Please provide proper input, year should be in range from 0 to 9999: "))
 
-    date = f'{month}-{year}'
+    date = datetime.date(year, month, 1).strftime("%m-%Y")
+
     return date

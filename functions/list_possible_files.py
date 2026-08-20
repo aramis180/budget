@@ -4,7 +4,7 @@ from config import file_directory
 
 file_listing_args = ["ls", file_directory]
 
-def edit_file():
+def list_possible_files():
     file_listing_process = subprocess.run(file_listing_args, text=True, capture_output=True)
     list_of_files = file_listing_process.stdout.replace("\n", ",").split(",")[:-1]
     list_of_files_to_display = "\n"
@@ -24,4 +24,10 @@ def edit_file():
 
     with open(path, "r") as f:
         file_content = f.read()
-    print(file_content)
+    print(f"""
+        Budget in {filename} contains:
+
+{file_content}
+        """)
+
+    return filename
