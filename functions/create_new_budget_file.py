@@ -1,4 +1,4 @@
-from operator import lshift
+
 import subprocess
 
 from config import file_directory, file_format

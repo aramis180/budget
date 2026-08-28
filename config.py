@@ -1,2 +1,2 @@
-file_format = ".txt"
+file_format = ".json"
 file_directory = "budget_files/"

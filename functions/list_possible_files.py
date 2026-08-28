@@ -1,5 +1,6 @@
 import os
 import subprocess
+import json
 from config import file_directory
 
 file_listing_args = ["ls", file_directory]
@@ -23,7 +24,7 @@ def list_possible_files():
     path = f'{os.path.abspath(file_directory)}/{filename}'
 
     with open(path, "r") as f:
-        file_content = f.read()
+        file_content = json.load(f)
     print(f"""
         Budget in {filename} contains:
 

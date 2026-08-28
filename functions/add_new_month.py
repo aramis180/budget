@@ -1,19 +1,37 @@
-import datetime
+import copy
 
+from default_template import default_template
+from functions.add_new_month_func.provide_month import provide_month
+from functions.add_new_month_func.add_data_to_provided_date import add_data_to_provided_date
+from functions.add_new_month_func.edit_existing_budget_file import edit_existing_budget_file
+from functions.add_new_month_func.provide_next_month import provide_next_month
 
-def add_new_month():
-    month_allowed = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    month = int(input("Provide month as integer, ex. 1 for January and 12 for December: "))
+def add_new_month(filename: str):
+    date = provide_month()
+    data_to_be_added = {}
+    data_to_be_added[date] = copy.deepcopy(default_template)
+    add_data_to_provided_date(data_to_be_added, date)
+
+    possibilities = [0, 1]
     while True:
-        if month in month_allowed:
-            break
-        month = int(input("Please provide proper input, ex. 1 for January and 12 for December: "))
-    year = int(input("Provide year as integer, year should be in range from 0 to 9999 , ex. 2026: "))
-    while True:
-        if year <= 9999 and year >= 0:
-            break
-        year = int(input("Please provide proper input, year should be in range from 0 to 9999: "))
+        loop = int(input("""
+        Do you want to add next month?
 
-    date = datetime.date(year, month, 1).strftime("%m-%Y")
+        0 -> No
+        1 -> Yes
+        """))
+        if loop not in possibilities:
+            loop = int(input("""
+        Do you want to add next month?
 
-    return date
+        0 -> No
+        1 -> Yes
+        """))
+
+        if loop == 0:
+            break
+        date = provide_next_month(date)
+        data_to_be_added[date] = copy.deepcopy(default_template)
+        add_data_to_provided_date(data_to_be_added, date)
+
+    edit_existing_budget_file(data_to_be_added, filename)

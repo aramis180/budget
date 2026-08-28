@@ -1,10 +1,10 @@
 
 
 default_template = {
-    "Wynagrodzenie": 0.0,
-    "Inne wpływy": 0.0,
-    "Oszczędności": 0.0,
-    "Wydatki stałe": 0.0,
-    "Jedzenie": 0.0,
-    "Konsumpcja": 0.0
+    "Salary": 0.0,
+    "Other proceeds": 0.0,
+    "Savings": 0.0,
+    "Fixed payments": 0.0,
+    "Food": 0.0,
+    "Lavish lifestyle": 0.0
 }

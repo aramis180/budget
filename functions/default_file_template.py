@@ -1,9 +1,12 @@
 import os
+import json
+import copy
 
 from default_template import default_template
-from functions.add_new_month import add_new_month
-from functions.add_budget_data import add_budget_data
+from functions.add_new_month_func.provide_month import provide_month
+from functions.add_new_month_func.add_data_to_provided_date import add_data_to_provided_date
 from config import file_directory
+from functions.add_new_month_func.provide_next_month import provide_next_month
 
 
 def defatult_file_template(filename: str):
@@ -20,10 +23,11 @@ def defatult_file_template(filename: str):
         print("""
         Now you will provide data for your budget.
         """)
+        date = provide_month()
         while True:
-            date = add_new_month()
-            budget[date] = default_template
-            print(add_budget_data(budget, date))
+            budget[date] = copy.deepcopy(default_template)
+            print(default_template)
+            print(add_data_to_provided_date(budget, date))
             loop = int(input("""
         Do you want to add next month?
 
@@ -33,5 +37,6 @@ def defatult_file_template(filename: str):
             if loop == 0:
                 path = f'{os.path.abspath(file_directory)}/{filename}'
                 with open(path, "w") as f:
-                    f.write(f'{budget}')
+                    json.dump(budget, f)
                 break
+            date = provide_next_month(date)
