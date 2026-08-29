@@ -24,4 +24,8 @@ def sort_dates(filename: str):
     for key in sorted(dict_for_comparison.keys()):
         list_of_keys.append(dict_for_comparison[key])
 
-    return list_of_keys
+    budget = {}
+    for key in list_of_keys:
+        budget[key] = file_content[key]
+
+    return budget

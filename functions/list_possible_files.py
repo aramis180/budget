@@ -16,7 +16,6 @@ def list_possible_files():
 
 
     files_to_be_edited = int(input((f"""
-        Files that can be eddited
         {list_of_files_to_display}
         """)))
 

@@ -1,11 +1,12 @@
 import argparse
 
 from functions.add_new_month import add_new_month
-from functions.allowed_functions import action_string
+from functions.allowed_functions import action_string, action_allowed
 from functions.action_question import action_question
 from functions.create_new_budget_file import create_new_budget_file
 from functions.default_file_template import defatult_file_template
 from functions.list_possible_files import list_possible_files
+from functions.view_contents import view_contents
 
 def main():
     introduction = """
@@ -15,7 +16,6 @@ def main():
     """
     print(introduction)
 
-    action_allowed = [0, 1, 2]
     action = action_question()
 
     while True:
@@ -29,7 +29,10 @@ def main():
         if action == 2:
             filename = list_possible_files()
             add_new_month(filename)
-
+            action = action_question()
+        if action == 3:
+            filename = list_possible_files()
+            view_contents(filename)
             action = action_question()
         if action not in action_allowed:
             action = int(input(f"""
