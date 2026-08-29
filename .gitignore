@@ -9,3 +9,4 @@ wheels/
 #other
 budget_files/
 functions/__pycache__/
+test.py

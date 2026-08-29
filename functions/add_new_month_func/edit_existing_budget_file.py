@@ -3,7 +3,7 @@ import os
 import json
 from config import file_directory
 
-def edit_existing_budget_file(budget: dict[str, dict[str, float]], filename):
+def edit_existing_budget_file(budget: dict[str, dict[str, float]], filename: str):
     path = f'{os.path.abspath(file_directory)}/{filename}'
     with open(path, "r") as f:
         file_content = json.load(f)

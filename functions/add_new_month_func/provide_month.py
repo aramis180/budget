@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 
 
 def provide_month():
@@ -14,6 +14,6 @@ def provide_month():
             break
         year = int(input("Please provide proper input, year should be in range from 0 to 9999: "))
 
-    date = datetime.date(year, month, 1).strftime("%m-%Y")
+    date = dt.date(year, month, 1).strftime("%m-%Y")
 
     return date
