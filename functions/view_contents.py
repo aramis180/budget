@@ -5,6 +5,7 @@ from tabulate import tabulate
 
 from config import file_directory
 from functions.sort_dates import sort_dates
+from functions.sum_up_categories import sum_up_categories
 
 
 def view_contents(filename: str):
@@ -12,7 +13,9 @@ def view_contents(filename: str):
     with open(path, "r") as f:
         file_content = json.load(f)
 
-    budget = sort_dates(filename)
+
+
+    budget = sum_up_categories(sort_dates(filename))
     categories = ["Dates"]
     for category in budget[list(budget.keys())[0]]:
         categories.append(category)
