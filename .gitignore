@@ -10,3 +10,4 @@ wheels/
 budget_files/
 functions/__pycache__/
 test.py
+bank_statements/storage/
